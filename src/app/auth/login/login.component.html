@@ -1,0 +1,28 @@
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="form-signin">
+  <mat-form-field class="example-full-width">
+    <input formControlName="email"
+           type="text"
+           id="email"
+           class="form-control"
+           placeholder="Email"
+           required autofocus
+           matInput>
+  </mat-form-field>
+  <p *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched">Введите email.</p>
+  <mat-form-field class="example-full-width">
+    <input matInput
+           formControlName="password"
+           type="password"
+           id="inputPassword"
+           class="form-control"
+           placeholder="Пароль"
+           required>
+  </mat-form-field>
+  <p *ngIf="!signupForm.get('password').valid && signupForm.get('password').touched">Введите пароль.</p>
+  <button mat-raised-button color="accent" type="submit"
+          [disabled]="signupForm.pristine || signupForm.invalid || isAuthorized">Войти
+  </button>
+  <div *ngIf="!!errorMessage" class="error-message">{{ errorMessage }}</div>
+  <a routerLink="/forgot-password" (click)="onRedirect()">Забыли пароль?</a>
+</form>
+
