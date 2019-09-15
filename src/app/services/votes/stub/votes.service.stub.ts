@@ -5,6 +5,8 @@ import {voutersMock} from "./mocks/voters.mock";
 import {CreateVoteDtoInterface} from "../dto/create-vote.dto";
 import {VoteDtoInterface} from "../dto/vote.dto";
 import {voteMock} from "./mocks/vote.mock";
+import {votesMock} from "./mocks/votes.mock";
+import {ShortVoteDtoInterface} from '../dto/short-vote.dto';
 
 export class VotesServiceStub {
   public fetchVoters$(): Observable<UserDtoInterface[]> {
@@ -13,5 +15,9 @@ export class VotesServiceStub {
 
   public saveVote$(vote: CreateVoteDtoInterface): Observable<VoteDtoInterface> {
     return of(voteMock);
+  }
+
+  public fetchVotes$(): Observable<ShortVoteDtoInterface[]> {
+    return of(votesMock);
   }
 }

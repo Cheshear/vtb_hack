@@ -5,6 +5,7 @@ import {Observable} from "rxjs/Observable";
 import {UserDtoInterface} from "./dto/user.dto";
 import {CreateVoteDtoInterface} from "./dto/create-vote.dto";
 import {VoteDtoInterface} from "./dto/vote.dto";
+import {ShortVoteDtoInterface} from './dto/short-vote.dto';
 import {AnswerDtoInterface} from "./dto/answer.dto";
 import {CreateAnswerDtoInterface} from "./dto/create-answer.dto";
 import {QuestionDetailsDtoInterface} from "./dto/question-details.dto";
@@ -31,5 +32,9 @@ export class VotesService {
 
   public postAnswer$(createdAnswer: CreateAnswerDtoInterface): Observable<AnswerDtoInterface> {
     return this.backendService.post(REST_API_URLS.POST_ANSWER, createdAnswer);
+  }
+
+  public fetchVotes$(): Observable<ShortVoteDtoInterface[]> {
+    return this.backendService.get(REST_API_URLS.VOTES_LIST);
   }
 }
