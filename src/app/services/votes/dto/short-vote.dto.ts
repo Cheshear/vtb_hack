@@ -1,8 +1,8 @@
-import {VoterDtoInterface} from './voter.dto';
+import {UserDtoInterface} from './voter.dto';
 
 export interface ShortVoteDtoInterface {
   id: number;
   title: string;
-  creator: VoterDtoInterface;
+  creator: UserDtoInterface;
   deadline: string;
 }

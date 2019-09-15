@@ -4,6 +4,7 @@ import {Vote} from './votes-list.component.spec';
 import {VotesService} from '../../services/votes/votes.service';
 import {ShortVoteDtoInterface} from '../../services/votes/dto/short-vote.dto';
 import {Observable} from 'rxjs/Observable';
+import {VotesServiceStub} from '../../services/votes/stub/votes.service.stub';
 
 @Component({
   selector: 'app-votes-list',
@@ -14,7 +15,7 @@ import {Observable} from 'rxjs/Observable';
 export class VotesListComponent implements OnInit {
   public votes: Observable<ShortVoteDtoInterface[]>;
 
-  constructor(public votesService: VotesService) { }
+  constructor(public votesService: VotesServiceStub) { }
   ngOnInit() {
     this.votes = this.getShortVotes$();
   }

@@ -2,10 +2,8 @@
 <mat-nav-list>
   <mat-list-item *ngFor="let vote of votes | async; let i=index; trackBy: trackById">
     <a class="votes" href=""> <b>{{i}}. {{vote.title}}</b>
-      <p class="nonvotes" matLine>
-        Creator: <span>{{vote.creator }}</span>
-        Deadline: {{vote.deadline}}
-      </p>
+        Создал(а): <span>{{vote.creator | userName }}</span>
+        Дедлайн: {{vote.deadline}}
     </a>
   </mat-list-item>
 </mat-nav-list>

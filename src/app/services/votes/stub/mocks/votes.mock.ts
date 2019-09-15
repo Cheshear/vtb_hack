@@ -15,7 +15,7 @@ export const votesMock: ShortVoteDtoInterface[] = [
       },
       position: "author",
     },
-    deadline: "13.09.2019"
+    deadline: "19.09.2019"
   },
   {
     id: 112,

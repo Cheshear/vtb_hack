@@ -1,9 +1,5 @@
 .votes {
-  font-size: larger;
+  font-size: large;
   font-family: Constantia;
-  padding-top: 20px;
-}
-
-.nonvotes {
-  padding-bottom: 20px;
+  padding: 20%;
 }
