@@ -4,11 +4,14 @@ import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {LoginDtoInterface} from "./dtos/login.dto";
 import {catchError} from "rxjs/operators";
 import {AuthResponseDtoInterface} from "./dtos/auth-response.dto";
+import {REST_API_URLS} from '../config/REST_API_URLS';
+
+const API_URL = "";
 
 @Injectable()
 export class AuthService {
 
-  private loginURL = 'http://localhost:8080/login';
+  private loginURL = REST_API_URLS.LOGIN;
 
   constructor(private http: HttpClient) {
   }

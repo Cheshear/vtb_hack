@@ -1,12 +1,13 @@
 <header class="header">
-  <a routerLink="votes-list">
-    <span class="mat-button">Список голосований</span>
+  <a class="buttons" routerLink="votes-list">
+    <span>Список голосований</span>
   </a>
-  <a routerLink="create-vote">
-    <span class="mat-button">Добавить голосование</span>
+  <div class="divider"> </div>
+  <a class="buttons" routerLink="create-vote">
+    <span>Добавить голосование</span>
   </a>
-  <a (click)="logout()">
-    <span class="mat-button">Выйти</span>
+  <a class="buttons exit-button" (click)="logout()">
+    <span >Выйти</span>
   </a>
 </header>
 <router-outlet></router-outlet>

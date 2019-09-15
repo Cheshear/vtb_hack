@@ -2,6 +2,14 @@ const API_URL = "/api";
 const API_VOTE_URL = `${API_URL}/vote`;
 
 export class REST_API_URLS {
+  public static get TRY_TO_AUTHORIZE(): string {
+    return `${API_URL}/try_to_authorize`;
+  }
+
+  public static get LOGIN(): string {
+    return `${API_URL}/login`;
+  }
+
   public static get VOTES_LIST(): string {
     return `${API_VOTE_URL}/votes_list`;
   }

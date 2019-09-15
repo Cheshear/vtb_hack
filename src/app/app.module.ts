@@ -22,7 +22,6 @@ import { VoteComponent } from './pages/vote/vote.component';
 import { CreateVoteComponent } from './pages/create-vote/create-vote.component';
 import { IssuesListComponent } from './pages/vote/issues-list/issues-list.component';
 import { IssueComponent } from './pages/vote/issue/issue.component';
-import { DocumentsComponent } from './pages/vote/documents/documents.component';
 import { UsersComponent } from './pages/vote/voters/voters.component';
 import {LoginComponent} from "./auth/login/login.component";
 import {AuthService} from "./auth/auth.service";
@@ -40,7 +39,6 @@ import { UserNamePipe } from './pipes/user-name/user-name.pipe';
     CreateVoteComponent,
     IssuesListComponent,
     IssueComponent,
-    DocumentsComponent,
     LoginComponent,
     UsersComponent,
     UserNamePipe
