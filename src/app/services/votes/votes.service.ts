@@ -5,7 +5,6 @@ import {Observable} from "rxjs/Observable";
 import {UserDtoInterface} from "./dto/voter.dto";
 import {CreateVoteDtoInterface} from "./dto/create-vote.dto";
 import {VoteDtoInterface} from "./dto/user.dto";
-import {VoteDtoInterface} from "./dto/vote.dto";
 import {ShortVoteDtoInterface} from './dto/short-vote.dto';
 
 @Injectable()
