@@ -2,9 +2,12 @@ import { Injectable } from '@angular/core';
 import {BackendService} from "../backend/backend.service";
 import {REST_API_URLS} from "../../config/REST_API_URLS";
 import {Observable} from "rxjs/Observable";
-import {UserDtoInterface} from "./dto/voter.dto";
+import {UserDtoInterface} from "./dto/user.dto";
 import {CreateVoteDtoInterface} from "./dto/create-vote.dto";
-import {VoteDtoInterface} from "./dto/user.dto";
+import {VoteDtoInterface} from "./dto/vote.dto";
+import {AnswerDtoInterface} from "./dto/answer.dto";
+import {CreateAnswerDtoInterface} from "./dto/create-answer.dto";
+import {QuestionDetailsDtoInterface} from "./dto/question-details.dto";
 
 @Injectable()
 export class VotesService {
@@ -20,5 +23,13 @@ export class VotesService {
 
   public fetchVoteById$(id: number): Observable<VoteDtoInterface> {
     return this.backendService.get(REST_API_URLS.GET_VOTE(id));
+  }
+
+  public fetchAnswers$(questionId: number): Observable<QuestionDetailsDtoInterface> {
+    return this.backendService.get(REST_API_URLS.GET_ANSWERS(questionId));
+  }
+
+  public postAnswer$(createdAnswer: CreateAnswerDtoInterface): Observable<AnswerDtoInterface> {
+    return this.backendService.post(REST_API_URLS.POST_ANSWER, createdAnswer);
   }
 }

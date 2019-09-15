@@ -29,4 +29,12 @@ export class REST_API_URLS {
   public static get GET_VOTE(): Function {
     return (voteId: number) => `${API_VOTE_URL}/get_vote`;
   }
+
+  public static get GET_ANSWERS(): Function {
+    return (questionId: number) => `${API_VOTE_URL}/get_answers/${questionId}`;
+  }
+
+  public static get POST_ANSWER(): string {
+    return `${API_VOTE_URL}/post_answer`;
+  }
 }

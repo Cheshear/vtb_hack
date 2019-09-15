@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import {VotesService} from "../../services/votes/votes.service";
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Observable} from "rxjs/Observable";
-import {UserDtoInterface} from "../../services/votes/dto/voter.dto";
+import {UserDtoInterface} from "../../services/votes/dto/user.dto";
 import {ShortVoteDtoInterface} from "../../services/votes/dto/short-vote.dto";
 import * as moment from "moment";
 import {VotesServiceStub} from "../../services/votes/stub/votes.service.stub";
 import {Router} from "@angular/router";
-import {VoteDtoInterface} from "../../services/votes/dto/user.dto";
+import {VoteDtoInterface} from "../../services/votes/dto/vote.dto";
 
 @Component({
   selector: 'app-create-vote',

@@ -1,14 +1,10 @@
-import {UserDtoInterface} from "./voter.dto";
-import {DocumentDtoInterface} from "./document.dto";
-import {QuestionDtoInterface} from "./question.dto";
+import {SubdivisionDtoInterface} from "./subdivision.dto";
 
-export interface VoteDtoInterface {
+export interface UserDtoInterface {
   id: number;
-  title: string;
-  description: string;
-  deadline: string;
-  createdBy: UserDtoInterface;
-  questions: QuestionDtoInterface[];
-  voters: UserDtoInterface[];
-  documentsLinks?: DocumentDtoInterface[];
+  firstName: string;
+  lastName: string;
+  middleName: string;
+  position: string;
+  subdivision: SubdivisionDtoInterface;
 }

@@ -1,4 +1,4 @@
-import {UserDtoInterface} from "./voter.dto";
+import {UserDtoInterface} from "./user.dto";
 
 export interface AnswerDtoInterface {
   id: number;

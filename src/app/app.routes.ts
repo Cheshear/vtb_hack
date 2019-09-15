@@ -14,6 +14,6 @@ export const appRoutes: Routes = [
   {path: "votes-list/:id", component: VoteComponent, children: [
     {path: "", redirectTo: "issues-list", pathMatch: "full"},
     {path: "issues-list", component: IssuesListComponent},
-    {path: "issue", component: IssueComponent },
+    {path: "issues-list/:id", component: IssueComponent },
   ]},
 ];

@@ -1,3 +1,15 @@
-<p>
-  vote works!
-</p>
+<div *ngIf="vote; else spinner">
+  <app-description [voteDescription]="voteDescription"></app-description>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+  <div>
+    <div>Данная задача создана: </div>
+    <div>{{ vote.createdBy | userName }}</div>
+    <div>Должность: {{ vote.createdBy.position }}</div>
+    <div>Подразделение: {{ vote.createdBy.subdivision.name }}</div>
+  </div>
+</div>
+<ng-template #spinner>
+  <mat-spinner></mat-spinner>
+</ng-template>

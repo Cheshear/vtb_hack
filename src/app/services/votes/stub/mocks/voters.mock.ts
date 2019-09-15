@@ -1,4 +1,4 @@
-import {UserDtoInterface} from "../../dto/voter.dto";
+import {UserDtoInterface} from "../../dto/user.dto";
 
 export const voutersMock: UserDtoInterface[] = [
   {

@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {UserDtoInterface} from "../../services/votes/dto/voter.dto";
+import {UserDtoInterface} from "../../services/votes/dto/user.dto";
 
 @Pipe({
   name: 'userName'

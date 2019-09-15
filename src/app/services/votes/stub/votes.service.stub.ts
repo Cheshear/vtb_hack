@@ -1,9 +1,9 @@
-import {UserDtoInterface} from "../dto/voter.dto";
+import {UserDtoInterface} from "../dto/user.dto";
 import {Observable} from "rxjs/Observable";
 import {of} from "rxjs/observable/of";
 import {voutersMock} from "./mocks/voters.mock";
 import {CreateVoteDtoInterface} from "../dto/create-vote.dto";
-import {VoteDtoInterface} from "../dto/user.dto";
+import {VoteDtoInterface} from "../dto/vote.dto";
 import {voteMock} from "./mocks/vote.mock";
 
 export class VotesServiceStub {

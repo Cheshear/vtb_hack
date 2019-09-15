@@ -29,6 +29,10 @@ import {BackendService} from "./services/backend/backend.service";
 import {VotesService} from "./services/votes/votes.service";
 import {VotesServiceStub} from "./services/votes/stub/votes.service.stub";
 import { UserNamePipe } from './pipes/user-name/user-name.pipe';
+import { DescriptionComponent } from './pages/vote/description/description.component';
+import { InvokeFunctionPipe } from './pipes/invoke-function/invoke-function.pipe';
+import { VotersListComponent } from './pages/vote/voters-list/voters-list.component';
+import { VoutingPopupComponent } from './pages/vote/vouting-popup/vouting-popup.component';
 
 
 @NgModule({
@@ -41,7 +45,11 @@ import { UserNamePipe } from './pipes/user-name/user-name.pipe';
     IssueComponent,
     LoginComponent,
     UsersComponent,
-    UserNamePipe
+    UserNamePipe,
+    DescriptionComponent,
+    InvokeFunctionPipe,
+    VotersListComponent,
+    VoutingPopupComponent
   ],
   imports: [
     CdkTableModule,
@@ -76,6 +84,7 @@ import { UserNamePipe } from './pipes/user-name/user-name.pipe';
     MatCheckboxModule,
   ],
   providers: [AuthService, BackendService, VotesService, VotesServiceStub],
+  entryComponents: [VoutingPopupComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

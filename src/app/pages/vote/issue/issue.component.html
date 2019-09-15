@@ -1,3 +1,13 @@
-<p>
-  issue works!
-</p>
+<ng-container *ngIf="!!questionDetails; else spinner">
+  <h1>{{ questionDetails.text }}</h1>
+  <button mat-button color="primary" (click)="openVotePopup()">Проголосовать</button>
+  <mat-list>
+    <mat-list-item *ngFor="let answer of questionDetails.answers">
+      <p> <mat-checkbox [ngModel]="answer.answer" [disabled]="true"> {{answer.voter | userName}} </mat-checkbox></p>
+      <p *ngIf="answer.comment"> {{answer.comment}} </p>
+    </mat-list-item>
+  </mat-list>
+</ng-container>
+<ng-template #spinner>
+  <mat-spinner></mat-spinner>
+</ng-template>
