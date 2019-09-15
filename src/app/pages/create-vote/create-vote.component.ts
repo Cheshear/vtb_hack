@@ -2,8 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import {VotesService} from "../../services/votes/votes.service";
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Observable} from "rxjs/Observable";
-import {VoterDtoInterface} from "../../services/votes/dto/voter.dto";
+import {UserDtoInterface} from "../../services/votes/dto/voter.dto";
 import {ShortVoteDtoInterface} from "../../services/votes/dto/short-vote.dto";
+import * as moment from "moment";
+import {VotesServiceStub} from "../../services/votes/stub/votes.service.stub";
+import {Router} from "@angular/router";
+import {VoteDtoInterface} from "../../services/votes/dto/user.dto";
 
 @Component({
   selector: 'app-create-vote',
@@ -14,9 +18,9 @@ export class CreateVoteComponent implements OnInit {
   public voteForm: FormGroup;
   public questionsForm: FormGroup;
   public votersForm: FormGroup;
-  public voters: VoterDtoInterface[];
+  public voters: UserDtoInterface[];
 
-  constructor(private voteService: VotesService) { }
+  constructor(private voteService: VotesServiceStub, private router: Router) { }
 
   public get questionsArray(): FormArray {
     return this.questionsForm.get('questionsArray') as FormArray;
@@ -27,6 +31,7 @@ export class CreateVoteComponent implements OnInit {
     this.questionsForm = new FormGroup({
       questionsArray: new FormArray([]),
     });
+    this.fetchAllVoters();
   }
 
   public addControlToQuestionsForm(): void {
@@ -39,24 +44,36 @@ export class CreateVoteComponent implements OnInit {
 
   public saveData(): void {
     const {title, description, deadline} = this.voteForm.getRawValue();
-    const questions: string[] = this.questionsForm.value.map((questionFormValue) => questionFormValue['question']);
-    const voters: ShortVoteDtoInterface[] = Object.keys(
-      this.votersForm.getRawValue()).map((key: string) => ({id: +key}));
+    const questions: string[] = this.questionsArray.value.map((questionFormValue) => questionFormValue['question']);
+    const votersFormValue = this.votersForm.getRawValue();
+    const voters: ShortVoteDtoInterface[] = Object.keys(votersFormValue)
+      .filter((key: string) => votersFormValue[key])
+      .map((key: string) => ({id: +key}));
 
     this.voteService.saveVote$({
       title,
       description,
-      deadline,
+      deadline: moment(deadline).toISOString(),
       questions,
       voters,
-    });
+    }).subscribe(
+      (vote: VoteDtoInterface) => {
+        this.router.navigate(['votes-list', `${vote.id}`]);
+      }
+    );
   }
 
   public selectAllVoters(): void {
     this.votersForm.setValue(this.voters.reduce(
-      (votersFormData: Record<string, FormControl>, { id }: VoterDtoInterface) => {
+      (votersFormData: Record<string, FormControl>, { id }: UserDtoInterface) => {
         return {...votersFormData, [id]: true };
       }, {}));
+  }
+
+  public isAnyVoterSelected(): boolean {
+    const votersFormValue = this.votersForm.getRawValue();
+    return Object.keys(votersFormValue)
+      .some((key: string) => votersFormValue[key]);
   }
 
 
@@ -70,7 +87,7 @@ export class CreateVoteComponent implements OnInit {
 
   private createVotersForm(): void {
     const voterFormData = this.voters.reduce(
-      (votersFormData: Record<string, FormControl>, { id }: VoterDtoInterface) => {
+      (votersFormData: Record<string, FormControl>, { id }: UserDtoInterface) => {
         return {...votersFormData, [id]: new FormControl(false) };
       }, {});
 
@@ -79,7 +96,7 @@ export class CreateVoteComponent implements OnInit {
 
   private fetchAllVoters(): void {
     this.voteService.fetchVoters$().subscribe(
-      (voters: VoterDtoInterface[]) => {
+      (voters: UserDtoInterface[]) => {
         this.voters = voters;
         this.createVotersForm();
       });

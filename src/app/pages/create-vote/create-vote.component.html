@@ -13,9 +13,7 @@
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-      <div>
-        <button mat-button matStepperNext [disabled]="voteForm.invalid">Следующий шаг</button>
-      </div>
+      <button mat-button matStepperNext [disabled]="voteForm.invalid">Следующий шаг</button>
     </form>
   </mat-step>
   <mat-step [stepControl]="questionsForm">
@@ -31,17 +29,34 @@
         </fieldset>
         <button mat-button (click)="addControlToQuestionsForm()" type="button">Добавить вопрос</button>
       </div>
+      <button mat-button matStepperNext [disabled]="questionsArray.controls.length < 1">Следующий шаг</button>
     </form>
+
   </mat-step>
   <mat-step [stepControl]="votersForm">
-    <button mat-button (click)="selectAllVoters()" color="primary">Выбрать всех</button>
-    <mat-list role="list">
-      <mat-list-item
-        *ngFor="let voter of voters | async"
-        role="listitem">
-        <mat-checkbox [formControlName]="voter.id">{{ voter }}</mat-checkbox>
-      </mat-list-item>
-    </mat-list>
-    <button mat-button (click)="saveData()"></button>
+    <ng-container *ngIf="voters && voters.length; else spinner">
+      <button mat-button (click)="selectAllVoters()" color="primary">Выбрать всех</button>
+      <form [formGroup]="votersForm">
+        <mat-list role="list">
+          <mat-list-item
+            *ngFor="let voter of voters"
+            role="listitem">
+            <mat-checkbox [formControlName]="voter.id">
+              <div>{{ voter | userName }}</div>
+              <div>Должность: {{ voter.position }} Подразделение: {{voter.subdivision.name}}</div>
+            </mat-checkbox>
+          </mat-list-item>
+        </mat-list>
+      </form>
+    </ng-container>
+    <button mat-button
+            [disabled]="!(voters && voters.length && isAnyVoterSelected())"
+            color="primary"
+            (click)="saveData()">
+      Создать голосование
+    </button>
+    <ng-template #spinner>
+      <mat-spinner></mat-spinner>
+    </ng-template>
   </mat-step>
 </mat-horizontal-stepper>

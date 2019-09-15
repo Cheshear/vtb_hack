@@ -29,6 +29,7 @@ import {AuthService} from "./auth/auth.service";
 import {BackendService} from "./services/backend/backend.service";
 import {VotesService} from "./services/votes/votes.service";
 import {VotesServiceStub} from "./services/votes/stub/votes.service.stub";
+import { UserNamePipe } from './pipes/user-name/user-name.pipe';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import {VotesServiceStub} from "./services/votes/stub/votes.service.stub";
     IssueComponent,
     DocumentsComponent,
     LoginComponent,
-    UsersComponent
+    UsersComponent,
+    UserNamePipe
   ],
   imports: [
     CdkTableModule,
@@ -75,7 +77,7 @@ import {VotesServiceStub} from "./services/votes/stub/votes.service.stub";
     MatTableModule,
     MatCheckboxModule,
   ],
-  providers: [AuthService, BackendService, {provide: VotesService, useClass: VotesServiceStub}],
+  providers: [AuthService, BackendService, VotesService, VotesServiceStub],
   bootstrap: [AppComponent]
 })
 export class AppModule {
