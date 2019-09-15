@@ -5,6 +5,7 @@ import {Observable} from "rxjs/Observable";
 import {VoterDtoInterface} from "./dto/voter.dto";
 import {CreateVoteDtoInterface} from "./dto/create-vote.dto";
 import {VoteDtoInterface} from "./dto/vote.dto";
+import {ShortVoteDtoInterface} from './dto/short-vote.dto';
 
 @Injectable()
 export class VotesService {
@@ -16,5 +17,9 @@ export class VotesService {
 
   public saveVote$(vote: CreateVoteDtoInterface): Observable<VoteDtoInterface> {
     return this.backendService.post(REST_API_URLS.SAVE_VOTE, vote);
+  }
+
+  public fetchVotes$(): Observable<ShortVoteDtoInterface[]> {
+    return this.backendService.get(REST_API_URLS.VOTES_LIST);
   }
 }

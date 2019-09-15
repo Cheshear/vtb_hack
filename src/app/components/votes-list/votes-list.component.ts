@@ -1,6 +1,9 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 
-import {Vote, votes} from './votes-list.component.spec';
+import {Vote} from './votes-list.component.spec';
+import {VotesService} from '../../services/votes/votes.service';
+import {ShortVoteDtoInterface} from '../../services/votes/dto/short-vote.dto';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-votes-list',
@@ -9,13 +12,14 @@ import {Vote, votes} from './votes-list.component.spec';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VotesListComponent implements OnInit {
-  votes = votes;
-  vote = this.votes[0];
-  constructor() { }
+  public votes: Observable<ShortVoteDtoInterface[]>;
 
-
+  constructor(public votesService: VotesService) { }
   ngOnInit() {
+    this.votes = this.getShortVotes$();
   }
-
+  private getShortVotes$(): Observable<ShortVoteDtoInterface[]> {
+    return this.votesService.fetchVotes$();
+  }
   trackById(index: number, vote: Vote): number { return vote.id; }
 }

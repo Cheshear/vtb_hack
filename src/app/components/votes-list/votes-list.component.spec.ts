@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { VotesListComponent } from './votes-list.component';
+import {VotesService} from '../../services/votes/votes.service';
 
 export class Vote {
   id: number;
@@ -9,13 +10,6 @@ export class Vote {
   deadline?: string;
 }
 
-export const votes: Vote[] = [
-  { id: 1, name: 'koko', creator: 123},
-  { id: 2, name: 'kiki'},
-  { id: 3, name: 'kuku'},
-  { id: 4, name: 'kaka'}
-];
-/**
 describe('VotesListComponent', () => {
   let component: VotesListComponent;
   let fixture: ComponentFixture<VotesListComponent>;
@@ -37,4 +31,4 @@ describe('VotesListComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-*/
+
