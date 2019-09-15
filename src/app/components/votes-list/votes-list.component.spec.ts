@@ -2,6 +2,20 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { VotesListComponent } from './votes-list.component';
 
+export class Vote {
+  id: number;
+  name: string;
+  creator?: number;
+  deadline?: string;
+}
+
+export const votes: Vote[] = [
+  { id: 1, name: 'koko'},
+  { id: 2, name: 'kiki'},
+  { id: 3, name: 'kuku'},
+  { id: 4, name: 'kaka'}
+];
+/**
 describe('VotesListComponent', () => {
   let component: VotesListComponent;
   let fixture: ComponentFixture<VotesListComponent>;
@@ -23,3 +37,4 @@ describe('VotesListComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+*/

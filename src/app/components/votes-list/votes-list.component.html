@@ -1,3 +1,10 @@
+
+
+<div *ngFor="let vote of votes; let i=index; trackBy: trackById" class="c-resource ng-star-inserted">
+  <a class="l-flex--column resource-row-link" target="_blank" href=""> ({{i}}) {{vote.name}} </a>
+</div>
+
 <p>
   votes-list works!
 </p>
+
