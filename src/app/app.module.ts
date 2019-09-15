@@ -12,14 +12,14 @@ import {
   MatNativeDateModule, MatProgressSpinnerModule,
   MatRadioModule,
   MatSelectModule, MatSnackBarModule,
-  MatStepperModule, MatTableModule
+  MatStepperModule, MatTableModule, MatCheckboxModule,
 } from "@angular/material";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {CdkTableModule} from "@angular/cdk/table";
 import {appRoutes} from "./app.routes";
 import { VotesListComponent } from './components/votes-list/votes-list.component';
 import { VoteComponent } from './pages/vote/vote.component';
-import { CreateVoteComponent } from './components/create-vote/create-vote.component';
+import { CreateVoteComponent } from './pages/create-vote/create-vote.component';
 import { IssuesListComponent } from './pages/vote/issues-list/issues-list.component';
 import { IssueComponent } from './pages/vote/issue/issue.component';
 import { DocumentsComponent } from './pages/vote/documents/documents.component';
@@ -28,6 +28,7 @@ import {LoginComponent} from "./auth/login/login.component";
 import {AuthService} from "./auth/auth.service";
 import {BackendService} from "./services/backend/backend.service";
 import {VotesService} from "./services/votes/votes.service";
+import {VotesServiceStub} from "./services/votes/stub/votes.service.stub";
 
 
 @NgModule({
@@ -72,8 +73,9 @@ import {VotesService} from "./services/votes/votes.service";
     MatMenuModule,
     MatSnackBarModule,
     MatTableModule,
+    MatCheckboxModule,
   ],
-  providers: [AuthService, BackendService, VotesService],
+  providers: [AuthService, BackendService, {provide: VotesService, useClass: VotesServiceStub}],
   bootstrap: [AppComponent]
 })
 export class AppModule {
