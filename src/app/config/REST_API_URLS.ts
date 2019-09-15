@@ -1,5 +1,7 @@
 const API_URL = '/api';
 const API_VOTE_URL = `${API_URL}/vote`;
+const API_URL = "/api";
+const API_VOTE_URL = `${API_URL}/vote`;
 
 export class REST_API_URLS {
   public static get TRY_TO_AUTHORIZE(): string {
