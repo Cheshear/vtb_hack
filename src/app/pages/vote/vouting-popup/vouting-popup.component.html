@@ -3,10 +3,10 @@
     <div>Если хотите оставить комментарий, вот вам поле господин</div>
     <textarea mat-input [formControl]="comment"></textarea>
   </div>
-  <button mat-button color="primary" (click)="">
+  <button mat-button color="primary" (click)="sendVoteResult(true)">
     Я соглсен
   </button>
-  <button mat-button color="accent" (click)="">
+  <button mat-button color="accent" (click)="sendVoteResult(false)">
     Я не согласен
   </button>
 </div>

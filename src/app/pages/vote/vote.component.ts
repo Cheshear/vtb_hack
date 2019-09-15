@@ -4,6 +4,7 @@ import {ActivatedRoute} from "@angular/router";
 import {VoteDtoInterface} from "../../services/votes/dto/vote.dto";
 import {Subscription} from "rxjs/Subscription";
 import {VoteDescriptionInterface} from "./models/vote-description.interface";
+import {VotesServiceStub} from "../../services/votes/stub/votes.service.stub";
 
 @Component({
   selector: 'app-vote',
@@ -16,7 +17,7 @@ export class VoteComponent implements OnInit {
   private voteId: number;
   private voteSubscription: Subscription;
 
-  constructor(private voteService: VotesService, private activateRoute: ActivatedRoute) { }
+  constructor(private voteService: VotesServiceStub, private activateRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.voteId = +this.activateRoute.snapshot.paramMap.get('id');

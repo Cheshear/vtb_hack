@@ -1,13 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import {VotesService} from "../../services/votes/votes.service";
+import {Component, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
-import {Observable} from "rxjs/Observable";
 import {UserDtoInterface} from "../../services/votes/dto/user.dto";
-import {ShortVoteDtoInterface} from "../../services/votes/dto/short-vote.dto";
 import * as moment from "moment";
 import {VotesServiceStub} from "../../services/votes/stub/votes.service.stub";
 import {Router} from "@angular/router";
 import {VoteDtoInterface} from "../../services/votes/dto/vote.dto";
+import {BaseVoteDtoInterface} from "../../services/votes/dto/base-vote.dto";
 
 @Component({
   selector: 'app-create-vote',
@@ -46,7 +44,7 @@ export class CreateVoteComponent implements OnInit {
     const {title, description, deadline} = this.voteForm.getRawValue();
     const questions: string[] = this.questionsArray.value.map((questionFormValue) => questionFormValue['question']);
     const votersFormValue = this.votersForm.getRawValue();
-    const voters: ShortVoteDtoInterface[] = Object.keys(votersFormValue)
+    const voters: BaseVoteDtoInterface[] = Object.keys(votersFormValue)
       .filter((key: string) => votersFormValue[key])
       .map((key: string) => ({id: +key}));
 

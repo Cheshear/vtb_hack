@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap} from "@angular/router";
 import {Observable} from "rxjs/Observable";
 import {map, switchMap} from "rxjs/operators";
@@ -7,6 +7,7 @@ import {QuestionDetailsDtoInterface} from "../../../services/votes/dto/question-
 import {VotesService} from "../../../services/votes/votes.service";
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import {VoutingPopupComponent} from "../vouting-popup/vouting-popup.component";
+import {VotesServiceStub} from "../../../services/votes/stub/votes.service.stub";
 
 @Component({
   selector: 'app-issue',
@@ -15,11 +16,11 @@ import {VoutingPopupComponent} from "../vouting-popup/vouting-popup.component";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IssueComponent implements OnInit, OnDestroy {
-  public issueId: number;
+  @Input() issueId: number;
   public questionDetails: QuestionDetailsDtoInterface;
   private issueSubscription: Subscription;
 
-  constructor(private activatedRoute: ActivatedRoute, private votesService: VotesService, public dialog: MatDialog) {}
+  constructor(private activatedRoute: ActivatedRoute, private votesService: VotesServiceStub, public dialog: MatDialog) {}
 
   ngOnInit() {
     this.issueId = +this.activatedRoute.snapshot.paramMap.get('id');
@@ -37,7 +38,7 @@ export class IssueComponent implements OnInit, OnDestroy {
 
   public openVotePopup(): void {
     const config = new MatDialogConfig();
-    config.id = `${this.issueId}`;
+    config.data = {id: `${this.issueId}`};
     this.dialog.open(VoutingPopupComponent, config);
   }
 }

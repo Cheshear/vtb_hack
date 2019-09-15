@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 import {VotesService} from "../../../services/votes/votes.service";
+import {VotesServiceStub} from "../../../services/votes/stub/votes.service.stub";
 
 @Component({
   selector: 'app-vouting-popup',
@@ -12,12 +13,13 @@ export class VoutingPopupComponent {
   public comment = new FormControl('');
 
   constructor(public dialogRef: MatDialogRef<VoutingPopupComponent>,
-              private votesService: VotesService,
+              private votesService: VotesServiceStub,
               @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   public sendVoteResult(voteResult: boolean): void {
     const comment = this.comment.value;
-    this.votesService.postAnswer$({answer: voteResult, comment, questionId: +this.data['id']});
+    this.votesService.postAnswer$({answer: voteResult, comment, questionId: +this.data['id']}).subscribe();
+    this.dialogRef.close();
   }
 
 }

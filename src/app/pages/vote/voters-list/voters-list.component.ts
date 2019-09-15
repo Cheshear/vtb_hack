@@ -6,10 +6,6 @@ import {UserDtoInterface} from "../../../services/votes/dto/user.dto";
   templateUrl: './voters-list.component.html',
   styleUrls: ['./voters-list.component.css']
 })
-export class VotersListComponent implements OnInit {
-
+export class VotersListComponent {
   @Input() voutersList: UserDtoInterface;
-  ngOnInit(): void {
-    throw new Error("Method not implemented.");
-  }
 }

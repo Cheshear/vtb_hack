@@ -2,7 +2,7 @@
   <h1>
     {{ voteDescription.title }}
   </h1>
-  <div>Вы должны проголосовать до {{ voteDescription.deadline | date: 'short' }}</div>
+  <div>Вы должны проголосовать до {{ voteDescription.deadline }}</div>
   <ng-container *ngIf="voteDescription.documentsLinks">
     <mat-list>
       <mat-list-item *ngFor="let link of voteDescription.documentsLinks">

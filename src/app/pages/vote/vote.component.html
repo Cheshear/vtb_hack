@@ -1,13 +1,14 @@
-<div *ngIf="vote; else spinner">
+<div *ngIf="vote; else spinner" class="vote-wrapper">
   <app-description [voteDescription]="voteDescription"></app-description>
   <div>
-    <router-outlet></router-outlet>
+    <app-issues-list [issues]="vote.questions"></app-issues-list>
   </div>
   <div>
     <div>Данная задача создана: </div>
     <div>{{ vote.createdBy | userName }}</div>
     <div>Должность: {{ vote.createdBy.position }}</div>
     <div>Подразделение: {{ vote.createdBy.subdivision.name }}</div>
+    <app-voters-list [voutersList]="vote.voters"></app-voters-list>
   </div>
 </div>
 <ng-template #spinner>

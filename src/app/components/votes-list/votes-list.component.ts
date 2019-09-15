@@ -1,6 +1,4 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-
-import {Vote} from './votes-list.component.spec';
 import {VotesService} from '../../services/votes/votes.service';
 import {ShortVoteDtoInterface} from '../../services/votes/dto/short-vote.dto';
 import {Observable} from 'rxjs/Observable';
@@ -28,5 +26,5 @@ export class VotesListComponent implements OnInit {
   private getShortVotes$(): Observable<ShortVoteDtoInterface[]> {
     return this.votesService.fetchVotes$();
   }
-  trackById(index: number, vote: Vote): number { return vote.id; }
+  trackById(index: number, vote: ShortVoteDtoInterface): number { return vote.id; }
 }

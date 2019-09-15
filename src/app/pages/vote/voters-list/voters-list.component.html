@@ -1,7 +1,9 @@
 <mat-list>
   <mat-list-item *ngFor="let voter of voutersList">
-    <div>{{ voter | userName }}</div>
-    <div>Должность: {{ voter.position }}</div>
-    <div>Департамент: {{ voter.subdivision }}</div>
+    <div class="container">
+      <div>{{ voter | userName }}</div>
+      <div>Должность: {{ voter.position }}</div>
+      <div>Департамент: {{ voter.subdivision.name }}</div>
+    </div>
   </mat-list-item>
 </mat-list>
