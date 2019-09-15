@@ -26,7 +26,7 @@ export class REST_API_URLS {
     return `${API_VOTE_URL}/save_vote`;
   }
 
-  public static get GET_VOTE(): string {
-    return `${API_VOTE_URL}/get_vote`;
+  public static get GET_VOTE(): Function {
+    return (voteId: number) => `${API_VOTE_URL}/get_vote`;
   }
 }

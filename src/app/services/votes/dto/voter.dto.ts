@@ -1,6 +1,6 @@
 import {SubdivisionDtoInterface} from "./subdivision.dto";
 
-export interface VoterDtoInterface {
+export interface UserDtoInterface {
   id: number;
   firstName: string;
   lastName: string;

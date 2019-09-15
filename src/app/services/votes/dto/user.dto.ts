@@ -1,4 +1,4 @@
-import {VoterDtoInterface} from "./voter.dto";
+import {UserDtoInterface} from "./voter.dto";
 import {DocumentDtoInterface} from "./document.dto";
 import {QuestionDtoInterface} from "./question.dto";
 
@@ -7,7 +7,8 @@ export interface VoteDtoInterface {
   title: string;
   description: string;
   deadline: string;
+  createdBy: UserDtoInterface;
   questions: QuestionDtoInterface[];
-  voters: VoterDtoInterface[];
+  voters: UserDtoInterface[];
   documentsLinks?: DocumentDtoInterface[];
 }
