@@ -1,0 +1,47 @@
+<mat-horizontal-stepper [linear]="false" #stepper="matHorizontalStepper">
+  <mat-step [stepControl]="voteForm">
+    <form [formGroup]="voteForm">
+      <ng-template matStepLabel>Описание голосования</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Тема голосования" formControlName="title" required>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput placeholder="Описание" formControlName="description"></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" formControlName="deadline" placeholder="Дата закрытия голосования">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext [disabled]="voteForm.invalid">Следующий шаг</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="questionsForm">
+    <ng-template matStepLabel>Вопросы голосования</ng-template>
+    <form [formGroup]="questionsForm">
+      <div formArrayName="questionsArray">
+        <fieldset *ngFor="let question of questionsArray.controls; let i=index" [formGroupName]="i">
+          <mat-form-field>
+            <input matInput formControlName="question"
+                   type="text"
+                   class="form-control">
+          </mat-form-field>
+        </fieldset>
+        <button mat-button (click)="addControlToQuestionsForm()" type="button">Добавить вопрос</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="votersForm">
+    <button mat-button (click)="selectAllVoters()" color="primary">Выбрать всех</button>
+    <mat-list role="list">
+      <mat-list-item
+        *ngFor="let voter of voters | async"
+        role="listitem">
+        <mat-checkbox [formControlName]="voter.id">{{ voter }}</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+    <button mat-button (click)="saveData()"></button>
+  </mat-step>
+</mat-horizontal-stepper>
