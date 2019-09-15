@@ -1,5 +1,3 @@
-const API_URL = '/api';
-const API_VOTE_URL = `${API_URL}/vote`;
 const API_URL = "/api";
 const API_VOTE_URL = `${API_URL}/vote`;
 

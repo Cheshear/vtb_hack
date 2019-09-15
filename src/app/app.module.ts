@@ -38,7 +38,6 @@ import {VotesServiceStub} from "./services/votes/stub/votes.service.stub";
     CreateVoteComponent,
     IssuesListComponent,
     IssueComponent,
-    DocumentsComponent,
     LoginComponent,
     UsersComponent
   ],

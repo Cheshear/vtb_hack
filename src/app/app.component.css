@@ -3,3 +3,31 @@
   height: 56px;
   background: #3f51b5;
 }
+.buttons {
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+  height: 64px;
+  line-height: 64px;
+  color: white;
+  position: relative;
+  top: -4px;
+  left: 5px;
+  text-decoration: none;
+  cursor: pointer
+}
+.buttons:hover {
+  color:#e6e6e6;
+}
+.buttons:active{
+  color:#b3b3b3
+}
+.exit-button {
+  float: right;
+  position: relative;
+  left: -20px;
+}
+.divider{
+  width:5px;
+  height:auto;
+  display:inline-block;
+}
+
