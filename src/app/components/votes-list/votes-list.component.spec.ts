@@ -10,7 +10,7 @@ export class Vote {
 }
 
 export const votes: Vote[] = [
-  { id: 1, name: 'koko'},
+  { id: 1, name: 'koko', creator: 123},
   { id: 2, name: 'kiki'},
   { id: 3, name: 'kuku'},
   { id: 4, name: 'kaka'}

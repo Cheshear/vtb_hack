@@ -1,10 +1,13 @@
 
+<mat-nav-list>
+  <mat-list-item *ngFor="let vote of votes; let i=index; trackBy: trackById">
+    <a class="votes" target="_blank" href=""> <b>({{i}}) lorem ipsum {{vote.name}}</b>
+      <p matLine>
+        Creator: <span>{{vote.creator}}</span>
+        Deadline: {{vote.deadline}}
+      </p>
+    </a>
+  </mat-list-item>
+</mat-nav-list>
 
-<div *ngFor="let vote of votes; let i=index; trackBy: trackById" class="c-resource ng-star-inserted">
-  <a class="l-flex--column resource-row-link" target="_blank" href=""> ({{i}}) {{vote.name}} </a>
-</div>
-
-<p>
-  votes-list works!
-</p>
 
