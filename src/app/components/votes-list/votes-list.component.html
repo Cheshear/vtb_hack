@@ -1,10 +1,19 @@
-
 <mat-nav-list>
-  <mat-list-item *ngFor="let vote of votes | async; let i=index; trackBy: trackById">
-    <a class="votes" href=""> <b>{{i}}. {{vote.title}}</b>
-        Создал(а): <span>{{vote.creator | userName }}</span>
-        Дедлайн: {{vote.deadline}}
-    </a>
+  <mat-list-item *ngFor="let vote of votes | async; let i=index; trackBy: trackById"
+                 class="vote-container">
+    <div>
+      <div>
+        <b>{{vote.title}}</b>
+      </div>
+      <div class="details-container">
+        <p class="vote-details">
+          Создал(а): <span>{{vote.creator | userName }}</span> <br>
+          Должность:  {{vote.creator.position}} <br>
+          Подразделение:  {{vote.creator.subdivision.name}} <br>
+          Дедлайн:  {{vote.deadline}}
+        </p>
+      </div>
+    </div>
   </mat-list-item>
 </mat-nav-list>
 

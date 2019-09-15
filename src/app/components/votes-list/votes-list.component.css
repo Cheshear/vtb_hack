@@ -1,5 +1,16 @@
-.votes {
+.vote-container {
+  display: flex;
+  align-items: flex-start;
   font-size: large;
   font-family: Constantia;
-  padding: 20%;
+  padding: 30px;
+}
+
+.vote-details {
+  font-size: small;
+  font-family: Constantia;
+}
+
+.details-container {
+  margin-right: 80px;
 }
